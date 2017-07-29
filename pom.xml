@@ -210,6 +210,16 @@
                 <ao.db.pass>postgres</ao.db.pass>
             </properties>
         </profile>
+        <profile>
+            <id>hsql</id>
+            <properties>
+                <ao.db>hsql</ao.db>
+                <ao.db.url>jdbc:hsqldb:file:testdb</ao.db.url>
+                <ao.db.schema>SA</ao.db.schema>
+                <ao.db.user>admin</ao.db.user>
+                <ao.db.pass>admin</ao.db.pass>
+            </properties>
+        </profile>
     </profiles>
 
 
