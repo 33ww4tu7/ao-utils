@@ -1,13 +1,17 @@
-Upon usage add following to your atlassian-plugin.xml:
+# README #
 
+### Upon usage add following to your atlassian-plugin.xml: ###
+
+```
 <ao key="...">
     ...
     <entity>com.famberlin.atlas.props.ao.PluginParameter</entity>
     ...
 </ao>
+```
 
-Spring Scanner v1.0 configuration
-
+### Spring Scanner v1.0 configuration ###
+```
 <plugin>
     <groupId>com.atlassian.plugin</groupId>
     <artifactId>atlassian-spring-scanner-maven-plugin</artifactId>
@@ -25,3 +29,4 @@ Spring Scanner v1.0 configuration
         <verbose>false</verbose>
     </configuration>
 </plugin>
+```
