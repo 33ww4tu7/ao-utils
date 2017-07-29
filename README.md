@@ -5,7 +5,8 @@
 ```
 <ao key="...">
     ...
-    <entity>com.famberlin.atlas.props.ao.PluginParameter</entity>
+    <entity>fam.atlas.utils.ao.PluginParameter</entity>
+    <entity>fam.atlas.utils.ao.PluginParameterExt</entity>
     ...
 </ao>
 ```
