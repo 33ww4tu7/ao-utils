@@ -1,0 +1,7 @@
+# User-specific stuff:
+.idea/
+build/
+target/
+## File-based project format:
+*.iws
+*.iml
