@@ -7,7 +7,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>fam.atlas.utils</groupId>
     <artifactId>ao-utils</artifactId>
-    <version>0.12</version>
+    <version>0.13</version>
 
     <name>ActiveObjects Utilities</name>
     <packaging>jar</packaging>
@@ -39,6 +39,12 @@
             <groupId>hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>1.8.0.7</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.4.1212</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -106,6 +112,7 @@
         <sourceDirectory>src/main/kotlin</sourceDirectory>
         <testSourceDirectory>src/test/kotlin</testSourceDirectory>
         <plugins>
+            <!--KOTLIN-->
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
@@ -130,6 +137,22 @@
                     <jvmTarget>1.8</jvmTarget>
                 </configuration>
             </plugin>
+            <!--SUREFIRE-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <ao.test.database>${ao.db}</ao.test.database>
+                        <db.url>${ao.db.url}</db.url>
+                        <db.schema>${ao.db.schema}</db.schema>
+                        <db.username>${ao.db.user}</db.username>
+                        <db.password>${ao.db.pass}</db.password>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+            <!--SOURCE-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
@@ -142,6 +165,7 @@
                     </execution>
                 </executions>
             </plugin>
+            <!--JAVADOC-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
@@ -168,6 +192,25 @@
         <spring.version>4.1.6.RELEASE</spring.version>
         <!-- This key is used to keep the consistency between the key in atlassian-plugin.or and the key to generate bundle. -->
         <atlassian.plugin.key>${project.groupId}.${project.artifactId}</atlassian.plugin.key>
+
+        <!--<ao.db>hsql</ao.db>-->
+        <!--<ao.db.url>localhost</ao.db.url>-->
+        <!--<ao.db.schema>public</ao.db.schema>-->
+        <!--<ao.db.user>admin</ao.db.user>-->
+        <!--<ao.db.pass>admin</ao.db.pass>-->
     </properties>
+    <profiles>
+        <profile>
+            <id>db-postgres</id>
+            <properties>
+                <ao.db>postgres</ao.db>
+                <ao.db.url>jdbc:postgresql://192.168.99.100:5432/postgres</ao.db.url>
+                <ao.db.schema>public</ao.db.schema>
+                <ao.db.user>postgres</ao.db.user>
+                <ao.db.pass>postgres</ao.db.pass>
+            </properties>
+        </profile>
+    </profiles>
+
 
 </project>

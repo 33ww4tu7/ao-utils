@@ -6,11 +6,12 @@ import fam.atlas.utils.Q
 import fam.atlas.utils.ao.PluginParameterExt
 import net.java.ao.EntityManager
 import net.java.ao.test.jdbc.Data
+import net.java.ao.test.jdbc.DynamicJdbcConfiguration
+import net.java.ao.test.jdbc.Jdbc
 import net.java.ao.test.junit.ActiveObjectsJUnitRunner
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import kotlin.test.assertFalse
 import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
@@ -20,6 +21,7 @@ import kotlin.test.assertTrue
 @SuppressWarnings("ALL")
 @RunWith(ActiveObjectsJUnitRunner::class)
 @Data(DBUpdater::class)
+@Jdbc(DynamicJdbcConfiguration::class)
 class ParameterExtServiceImplTest {
 
     internal var entityManager: EntityManager? = null
@@ -51,8 +53,15 @@ class ParameterExtServiceImplTest {
 
     @Test
     fun getIn() {
-        val arr = ao!!.find(PluginParameterExt::class.java, Q.query().isIn("KEY", listOf("key1", "key2")).build())
-        assertFalse { arr.isEmpty() }
+        assertTrue {
+            ao!!.find(PluginParameterExt::class.java, Q.query().isIn("KEY", listOf("key1", "key2")).build()).size == 2
+        }
+        assertTrue {
+            ao!!.find(PluginParameterExt::class.java, Q.query().isIn("KEY", listOf("key1")).build()).size == 1
+        }
+        assertTrue {
+            ao!!.find(PluginParameterExt::class.java, Q.query().isIn("KEY", listOf("key1", "key4")).build()).size == 1
+        }
     }
 
     @Test

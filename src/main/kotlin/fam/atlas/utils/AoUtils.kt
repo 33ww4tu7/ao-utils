@@ -62,8 +62,8 @@ class Q private constructor(
     }
 
     override fun like(prefix: String, value: Any): OO {
-        query = "$query $prefix LIKE ?%"
-        params.add(value)
+        query = "$query $prefix LIKE '%$value%'"
+//        params.add(value)
         return this
     }
 
