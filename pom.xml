@@ -7,7 +7,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>fam.atlas.utils</groupId>
     <artifactId>ao-utils</artifactId>
-    <version>0.14</version>
+    <version>0.14-SNAPSHOT</version>
 
     <name>ActiveObjects Utilities</name>
     <packaging>jar</packaging>
@@ -221,6 +221,21 @@
             </properties>
         </profile>
     </profiles>
-
-
+    <scm>
+        <connection>scm:git:ssh://git@bitbucket.org:famberlin/atlassian-ao-utils.git</connection>
+        <developerConnection>scm:git:ssh://git@bitbucket.org:famberlin/atlassian-ao-utils.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+    <distributionManagement>
+        <repository>
+            <id>central</id>
+            <name>repo.famberlin.com-releases</name>
+            <url>https://repo.famberlin.com/artifactory/libs-release</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>repo.famberlin.com-snapshots</name>
+            <url>https://repo.famberlin.com/artifactory/libs-snapshot</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
