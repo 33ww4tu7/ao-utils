@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>fam.atlas.utils</groupId>
     <artifactId>ao-utils</artifactId>
-    <version>0.15-SNAPSHOT</version>
+    <version>0.15</version>
 
     <name>ActiveObjects Utilities</name>
     <packaging>jar</packaging>
@@ -229,14 +227,14 @@
                 <ao.db.url>jdbc:hsqldb:mem:ao_test</ao.db.url>
                 <ao.db.schema>PUBLIC</ao.db.schema>
                 <ao.db.user>sa</ao.db.user>
-                <ao.db.pass></ao.db.pass>
+                <ao.db.pass />
             </properties>
         </profile>
     </profiles>
     <scm>
         <connection>scm:git:ssh://git@bitbucket.org:famberlin/atlassian-ao-utils.git</connection>
         <developerConnection>scm:git:ssh://git@bitbucket.org:famberlin/atlassian-ao-utils.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>v0.15</tag>
     </scm>
     <distributionManagement>
         <repository>
