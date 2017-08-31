@@ -137,6 +137,15 @@
                     <jvmTarget>1.8</jvmTarget>
                 </configuration>
             </plugin>
+            <!--RELEASE-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                </configuration>
+            </plugin>
             <!--SUREFIRE-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -217,7 +226,7 @@
                 <ao.db.url>jdbc:hsqldb:mem:ao_test</ao.db.url>
                 <ao.db.schema>PUBLIC</ao.db.schema>
                 <ao.db.user>sa</ao.db.user>
-                <ao.db.pass></ao.db.pass>
+                <ao.db.pass />
             </properties>
         </profile>
     </profiles>
