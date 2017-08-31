@@ -221,12 +221,15 @@
         </profile>
         <profile>
             <id>hsql</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
                 <ao.db>hsql</ao.db>
                 <ao.db.url>jdbc:hsqldb:mem:ao_test</ao.db.url>
                 <ao.db.schema>PUBLIC</ao.db.schema>
                 <ao.db.user>sa</ao.db.user>
-                <ao.db.pass />
+                <ao.db.pass></ao.db.pass>
             </properties>
         </profile>
     </profiles>
