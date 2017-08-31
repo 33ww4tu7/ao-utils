@@ -8,7 +8,9 @@ import java.util.*
  */
 interface QQ {
     fun eq(key: String, value: Any?): OO
+    /** Will result the whole query as  empty if an empty [value] passed here */
     fun isIn(key: String, value: List<String>): OO
+
     fun eqNotNull(key: String, value: Any): OO
     fun eqIgnore(key: String, value: Any?): OO
     fun like(prefix: String, value: Any): OO
@@ -43,7 +45,8 @@ class Q private constructor(
     }
 
     override fun isIn(key: String, value: List<String>): OO {
-        query = "$query $key IN ( ${value.map { "'$it'" }.joinToString(separator = ", ")} )"
+        query = if (value.isEmpty()) "$query 1 = 2" //yes, i need to "false" this specific one, better ideas?
+        else "$query $key IN ( ${value.map { "'$it'" }.joinToString(separator = ", ")} )"
         return this
     }
 

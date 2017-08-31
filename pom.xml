@@ -7,7 +7,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>fam.atlas.utils</groupId>
     <artifactId>ao-utils</artifactId>
-    <version>0.14-SNAPSHOT</version>
+    <version>0.15-SNAPSHOT</version>
 
     <name>ActiveObjects Utilities</name>
     <packaging>jar</packaging>
