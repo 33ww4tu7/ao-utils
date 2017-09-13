@@ -238,7 +238,7 @@
     </scm>
     <distributionManagement>
         <repository>
-            <id>central</id>
+            <id>releases</id>
             <name>repo.famberlin.com-releases</name>
             <url>https://repo.famberlin.com/artifactory/libs-release</url>
         </repository>
