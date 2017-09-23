@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>fam.atlas.utils</groupId>
     <artifactId>ao-utils</artifactId>
-    <version>0.18-SNAPSHOT</version>
+    <version>0.19-SNAPSHOT</version>
 
     <name>ActiveObjects Utilities</name>
     <packaging>jar</packaging>
@@ -190,7 +190,7 @@
     </build>
 
     <properties>
-        <kotlin.version>1.1.4-3</kotlin.version>
+        <kotlin.version>1.1.50</kotlin.version>
         <kotlin.compiler.jvmTarget>1.8</kotlin.compiler.jvmTarget>
         <platform.version>3.0.0</platform.version>
         <ao.version>1.2.2</ao.version>
