@@ -68,6 +68,22 @@ class ParameterExtServiceImplTest {
     }
 
     @Test
+    fun getNotIn() {
+        assertTrue {
+            ao!!.find(PluginParameterExt::class.java, Q.query().isNotIn("KEY", listOf("key1", "key2")).build()).size == 1
+        }
+        assertTrue {
+            ao!!.find(PluginParameterExt::class.java, Q.query().isNotIn("KEY", listOf("key1")).build()).size == 2
+        }
+        assertTrue {
+            ao!!.find(PluginParameterExt::class.java, Q.query().isNotIn("KEY", listOf("key5", "key4")).build()).size == 3
+        }
+        assertTrue {
+            ao!!.find(PluginParameterExt::class.java, Q.query().isNotIn("KEY", listOf()).build()).isEmpty()
+        }
+    }
+
+    @Test
     fun getInComplex() {
         assertTrue {
             ao!!.find(PluginParameterExt::class.java, Q.query().isIn("KEY", listOf()).build()).isEmpty()

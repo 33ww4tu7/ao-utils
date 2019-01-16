@@ -1,16 +1,20 @@
 package fam.atlas.utils
 
 import net.java.ao.Query
-import java.util.*
 
 /**
  * interface for chaining restrictions in [Q]
  */
 interface QQ {
+    /** column [key] equals [value], will accept NULL and check against it*/
     fun eq(key: String, value: Any?): OO
-    /** Will result the whole query as  empty if an empty [value] passed here */
+    /** column [key] NOT equals [value], will accept NULL and check against it*/
+    fun neq(key: String, value: Any?): OO
+    /** Will result the whole query as empty if an empty [value] passed here */
     fun isIn(key: String, value: List<String>): OO
-
+    /** Will result the whole query as empty if an empty [value] passed here */
+    fun isNotIn(key: String, value: List<String>): OO
+    /** column [key] equals non nullable [value]*/
     fun eqNotNull(key: String, value: Any): OO
     fun eqIgnore(key: String, value: Any?): OO
     fun like(prefix: String, value: Any): OO
@@ -31,8 +35,9 @@ interface OO {
  * Class provides chained Query builder for AO database services
  */
 class Q private constructor(
-        private var query: String = String(),
-        private var params: MutableList<Any> = ArrayList()) : QQ, OO {
+    private var query: String = String(),
+    private var params: MutableList<Any> = mutableListOf()
+) : QQ, OO {
 
     companion object {
         fun query(): QQ = Q()
@@ -44,9 +49,21 @@ class Q private constructor(
         return this
     }
 
+    override fun neq(key: String, value: Any?): OO {
+        query = "$query ${if (value == null) "$key IS NOT NULL" else "$key != ?"}"
+        value?.let { params.add(it) }
+        return this
+    }
+
     override fun isIn(key: String, value: List<String>): OO {
         query = if (value.isEmpty()) "$query 1 = 2" //yes, i need to "false" this specific one, better ideas?
         else "$query $key IN ( ${value.map { "'$it'" }.joinToString(separator = ", ")} )"
+        return this
+    }
+
+    override fun isNotIn(key: String, value: List<String>): OO {
+        query = if (value.isEmpty()) "$query 1 = 2" //yes, i need to "false" this specific one, better ideas?
+        else "$query $key NOT IN ( ${value.map { "'$it'" }.joinToString(separator = ", ")} )"
         return this
     }
 
