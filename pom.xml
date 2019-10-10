@@ -248,4 +248,10 @@
             <url>https://repo.famberlin.com/artifactory/libs-snapshot</url>
         </snapshotRepository>
     </distributionManagement>
+    <repositories>
+        <repository>
+            <id>test</id>
+            <url>https://maven.atlassian.com/content/repositories/atlassian-public/</url>
+        </repository>
+    </repositories>
 </project>
